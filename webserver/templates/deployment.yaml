@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "webserver.fullname" . }}
+  labels:
+    app: {{ include "webserver.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "webserver.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "webserver.fullname" . }}
+    spec:
+      containers:
+      - name: {{ include "webserver.fullname" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        env:
+        - name: MYSQL_SVC
+          value: mysql-service
+        - name: MYSQL_DATABASE
+          value: assignment
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-creds
+              key: username
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-creds
+              key: password
+        ports:
+        - containerPort: {{ .Values.service.port }}
