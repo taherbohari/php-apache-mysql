@@ -11,7 +11,7 @@ Simple php-apache application to read contents from mysql database
 - k8s namespace used : default
 - mysql db name used : assignment
 
-**NOTE :** I have deployed this setup on AWS instance.
+**NOTE :** I have deployed this setup on AWS instance and running minikube with --vm-driver as None
 
 ## Steps
 #### Clone this repository
