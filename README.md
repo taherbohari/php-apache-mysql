@@ -60,7 +60,7 @@ curl http://<IP>:31603
 ```
 eg.
 ```
-curl http://100.71.3.113:31456
+curl http://100.71.3.113:31603
 Accessing MySQL inside K8S <br>Hello World!!!<br>
 ```
 
