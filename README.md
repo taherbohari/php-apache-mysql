@@ -9,6 +9,7 @@ Simple php-apache application to read contents from mysql database
 
 ## Defaults
 - k8s namespace used : default
+- mysql db name used : assignment
 
 **NOTE :** I have deployed this setup on AWS instance.
 
@@ -57,3 +58,10 @@ minikube service list
 ```
 curl http://<IP>:31603
 ```
+eg.
+```
+curl http://100.71.3.113:31456
+Accessing MySQL inside K8S <br>Hello World!!!<br>
+```
+
+**NOTE :** You can exec into mysql pod and insert new data into assignment database
